@@ -12,10 +12,12 @@ export interface ResponseError {
 
 export enum ResponseErrorStatus {
   parseBody = 500,
-  parseJSON = 400
+  parseJSON = 400,
+  validateInput = 400
 }
 
 export enum ResponseErrorMessage {
   parseBody = 'Failed to parse body',
-  parseJSON = 'Invalid JSON'
+  parseJSON = 'Invalid JSON',
+  validateInput = 'Invalid input'
 }
