@@ -3,6 +3,7 @@ import { parseJSON } from '../lib/parse-json.js';
 import { ResponseErrorStatus, ResponseErrorMessage } from '../types/index.js';
 import { PureHttpRequest, PureHttpResponse } from '../types/pure-http.js';
 import { z } from 'zod';
+import { marked } from 'marked';
 
 /**
  * Transforms markdown and returns HTML.
@@ -11,6 +12,7 @@ async function markdownToHtml(request: PureHttpRequest, response: PureHttpRespon
   let body = await parseBody(request, response);
   let json = await parseJSON(body, response);
 
+  // Construct schema for validation
   const inputSchema = z.object({
     markdown: z.string({
       required_error: 'markdown property is required',
@@ -18,25 +20,27 @@ async function markdownToHtml(request: PureHttpRequest, response: PureHttpRespon
     })
   });
 
-  let parsedMarkdown: string = '';
-
   try {
+    // Validate markdown input
     const result = await inputSchema.safeParseAsync(json);
+
     if (!result.success || typeof result.data.markdown !== 'string') {
       response.json({ reason: ResponseErrorMessage.validateInput }, false, ResponseErrorStatus.validateInput);
       return;
     }
-    parsedMarkdown = result.data.markdown;
+
+    const { markdown = '' } = result.data || {};
+
+    // Transform markdown into HTML
+    const html = marked.parse(markdown);
+
+    // TODO - Sanitize output HTML
+
+    response.json({ html }, false, 200);
   } catch (error) {
     console.error(error);
     response.json({ reason: ResponseErrorMessage.validateInput }, false, ResponseErrorStatus.validateInput);
   }
-
-  // TODO - Transform markdown
-  // TODO - Sanitize HTML
-
-  let html = { html: '<h1>Hello, world!</h1>' }; // Stub for now
-  response.json(html, false, 200);
 }
 
 export { markdownToHtml };
