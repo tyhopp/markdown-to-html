@@ -3,13 +3,13 @@ import { parseBody } from './lib/parse-body.js';
 import { parseJSON } from './lib/parse-json.js';
 import { PureHttpRequest, PureHttpResponse } from './types/pure-http.js';
 
-const server: IPureHttpServer = createServer();
+const app: IPureHttpServer = createServer();
 
 // TODO - Confirm CORS/access control requirements
 // TODO - Allow different port via process.env
 // TODO - Handle 405
 
-server.post('/markdown-to-html', async (request: PureHttpRequest, response: PureHttpResponse) => {
+app.post('/markdown-to-html', async (request: PureHttpRequest, response: PureHttpResponse) => {
   let body = await parseBody(request, response);
   let json = await parseJSON(body, response);
   // TODO - Validate input
@@ -19,6 +19,8 @@ server.post('/markdown-to-html', async (request: PureHttpRequest, response: Pure
   response.json(html, false, 200);
 });
 
-server.listen(3000);
+app.listen(3000);
 
 console.log('Listening on http://localhost:3000');
+
+export { app };
