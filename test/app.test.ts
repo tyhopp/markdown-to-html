@@ -50,12 +50,20 @@ markdownEndpoint('should NOT be accessable via a DELETE request', async () => {
   assert.is(response.statusCode, 404);
 });
 
-markdownEndpoint('should be accessable via a POST request', async () => {
+markdownEndpoint('should be accessable via a POST request with valid input', async () => {
   const response = await request(server)
     .post(path.markdown)
     .set('Accept', 'application/json')
     .send({ markdown: '# Hello world' });
   assert.is(response.statusCode, 200);
+});
+
+markdownEndpoint('should be NOT accessable via a POST request with invalid input', async () => {
+  const response = await request(server)
+    .post(path.markdown)
+    .set('Accept', 'application/json')
+    .send({ incorrectMarkdownKey: '# Hello world' });
+  assert.is(response.statusCode, 400);
 });
 
 markdownEndpoint.run();
