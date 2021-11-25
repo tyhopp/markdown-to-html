@@ -4,6 +4,7 @@ import { ResponseErrorStatus, ResponseErrorMessage } from '../types/index.js';
 import { PureHttpRequest, PureHttpResponse } from '../types/pure-http.js';
 import { z } from 'zod';
 import { marked } from 'marked';
+import sanitize from 'xss';
 
 /**
  * Transforms markdown and returns HTML.
@@ -34,9 +35,10 @@ async function markdownToHtml(request: PureHttpRequest, response: PureHttpRespon
     // Transform markdown into HTML
     const html = marked.parse(markdown);
 
-    // TODO - Sanitize output HTML
+    // Sanitize output HTML
+    const sanitizedHtml = sanitize(html);
 
-    response.json({ html }, false, 200);
+    response.json({ html: sanitizedHtml }, false, 200);
   } catch (error) {
     console.error(error);
     response.json({ reason: ResponseErrorMessage.validateInput }, false, ResponseErrorStatus.validateInput);
