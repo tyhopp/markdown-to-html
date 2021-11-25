@@ -92,7 +92,6 @@ markdownEndpoint('should sanitize output HTML', async () => {
     markdown: '# An H1 header\n<script>alert("xss");</script>'
   });
   assert.is(response.statusCode, 200);
-  console.log(response.body);
   assert.is(response.body.html, '<h1>An H1 header</h1>\n&lt;script&gt;alert("xss");&lt;/script&gt;');
 });
 
