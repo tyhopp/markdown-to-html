@@ -3,14 +3,14 @@
 Node application serving an endpoint that transforms markdown into HTML.
 ## Usage
 
-- `git@github.com:tyhopp/markdown-to-html.git` to clone the project locally
+- `git clone git@github.com:tyhopp/markdown-to-html.git` to clone the project locally
 - `cd markdown-to-html && npm install` to navigate to the project and install Node dependencies
 - `npm run build` to compile the TypeScript to JavaScript
-- `npm run serve` to serve the project locally at https://localhost:3000
+- `npm run serve` to serve the project locally at http://localhost:3000
 
 We could try this out with `curl` or a tool like Postman, but lets do a regular `fetch` request in the browser instead to simulate how a client might interact with it in the browser.
 
-Navigate to https://localhost:3000, open the devtools in your browser, paste this in the console and execute:
+Navigate to http://localhost:3000, open the devtools in your browser, paste this in the console and execute:
 
 ```javascript
 fetch('http://localhost:3000/markdown-to-html', {
