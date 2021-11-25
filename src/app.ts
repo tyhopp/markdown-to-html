@@ -4,7 +4,6 @@ import { markdownToHtml } from './services/markdown-to-html.js';
 
 const app: IPureHttpServer = createServer();
 
-// TODO - Confirm CORS/access control requirements
 // TODO - Allow different port via process.env
 // TODO - Handle 405
 
