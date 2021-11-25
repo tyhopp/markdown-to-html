@@ -23,7 +23,7 @@ fetch('http://localhost:3000/markdown-to-html', {
 
 You should see this as your response:
 
-```json
+```ascii
 {html: "<h1>Hello world</h1>↵"}
 ```
 
