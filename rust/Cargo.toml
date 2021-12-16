@@ -1,0 +1,12 @@
+[package]
+name = "markdown-to-html"
+version = "0.1.0"
+description = "Rust application serving an endpoint that transforms markdown into HTML."
+authors = ["Ty Hopp"]
+license = "MIT"
+readme = "README.md"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+warp = "0.3"
