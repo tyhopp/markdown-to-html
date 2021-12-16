@@ -1,0 +1,4 @@
+{
+  "rust-analyzer.files.excludeDirs": ["node", "benchmark"],
+  "rust-analyzer.linkedProjects": ["rust/Cargo.toml"]
+}
