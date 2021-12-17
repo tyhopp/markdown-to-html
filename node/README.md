@@ -6,11 +6,10 @@ Node application serving an endpoint that transforms markdown into HTML.
 
 - `npm install` to install Node dependencies
 - `npm run build` to compile the TypeScript to JavaScript
-- `npm run serve` to serve the project locally at http://localhost:3000
-
-We could try this out with `curl` or a tool like Postman, but lets do a regular `fetch` request in the browser instead to simulate how a client might interact with it in the browser.
-
-Navigate to http://localhost:3000, open the devtools in your browser, paste this in the console and execute:
+- `npm run serve` to serve the project locally
+- Navigate to http://localhost:3000
+- Open the devtools in your browser
+- Paste this in the console and execute:
 
 ```javascript
 fetch('http://localhost:3000/markdown-to-html', {
@@ -53,4 +52,5 @@ There is no watch mode implmented yet since `uvu` takes a modular approach (does
 
 ## Benchmark
 
-See instructions in the [root README](../README.md).
+- In the `node` directory, execute `npm run serve` to run the server
+- In the `benchmark` directory, execute `bash benchmark.sh` to see benchmark output from ApacheBench

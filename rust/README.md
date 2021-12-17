@@ -4,11 +4,10 @@ Rust application serving an endpoint that transforms markdown into HTML.
 
 ## Usage
 
-- `cargo run` to download dependencies and run locally
-
-We could try this out with `curl` or a tool like Postman, but lets do a regular `fetch` request in the browser instead to simulate how a client might interact with it in the browser.
-
-Navigate to http://localhost:3000, open the devtools in your browser, paste this in the console and execute:
+- `cargo run` to download dependencies and run the server locally
+- Navigate to http://localhost:3000
+- Open the devtools in your browser
+- Paste this in the console and execute:
 
 ```javascript
 fetch('http://localhost:3000/markdown-to-html', {
@@ -30,7 +29,7 @@ You should see this as your response:
 
 ## Development
 
-The development loop is make edits > `cargo-run`, that's it.
+The development loop is to make edits and execute `cargo run`.
 
 ## Tools
 
@@ -49,4 +48,5 @@ TBD
 
 ## Benchmark
 
-See instructions in the [root README](../README.md).
+- In the `rust` directory, execute `cargo run --release` to use the Rust profile optimized for releases
+- In the `benchmark` directory, execute `bash benchmark.sh` to see benchmark output from ApacheBench
