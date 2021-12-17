@@ -6,4 +6,4 @@
 # -c is concurrent clients
 # -n is the total number of requests
 
-ab -p markdown.json -T application/json -c 20 -n 100  "http://localhost:3000/markdown-to-html"
+ab -p markdown.json -T application/json -c 20 -n 100  "http://127.0.0.1:3000/markdown-to-html"
