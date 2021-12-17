@@ -4,8 +4,7 @@ Node application serving an endpoint that transforms markdown into HTML.
 
 ## Usage
 
-- `git clone git@github.com:tyhopp/markdown-to-html.git` to clone the project locally
-- `cd markdown-to-html && npm install` to navigate to the project and install Node dependencies
+- `npm install` to install Node dependencies
 - `npm run build` to compile the TypeScript to JavaScript
 - `npm run serve` to serve the project locally at http://localhost:3000
 
@@ -16,6 +15,9 @@ Navigate to http://localhost:3000, open the devtools in your browser, paste this
 ```javascript
 fetch('http://localhost:3000/markdown-to-html', {
   method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
   body: JSON.stringify({ markdown: '# Hello world' })
 })
   .then((response) => response.json())
