@@ -10,3 +10,7 @@ edition = "2021"
 [dependencies]
 tokio = { version = "1", features = ["full"] }
 warp = "0.3"
+pulldown-cmark = "0.8.0"
+ammonia = "3"
+serde = "1.0.132"
+serde_derive = "1.0.132"

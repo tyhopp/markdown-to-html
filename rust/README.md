@@ -4,11 +4,33 @@ Rust application serving an endpoint that transforms markdown into HTML.
 
 ## Usage
 
-- `cargo run`
+- `cargo run` to download dependencies and run locally
+
+We could try this out with `curl` or a tool like Postman, but lets do a regular `fetch` request in the browser instead to simulate how a client might interact with it in the browser.
+
+Navigate to http://localhost:3000, open the devtools in your browser, paste this in the console and execute:
+
+```javascript
+fetch('http://localhost:3000/markdown-to-html', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ markdown: '# Hello world' }),
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+
+You should see this as your response:
+
+```ascii
+{html: "<h1>Hello world</h1>↵"}
+```
 
 ## Development
 
-TBD
+The development loop is make edits > `cargo-run`, that's it.
 
 ## Tools
 
