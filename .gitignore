@@ -1,9 +1,16 @@
-.DS_Store
-.env
-node_modules
-dist
+# Misc
 *.log
 *.local
+.DS_Store
+.env
+
+# IDE
 .idea
-.vscode
+
+# Node impl
+node_modules
 tsconfig.tsbuildinfo
+dist
+
+# Rust impl
+target
